@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Augļu spēks{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <h1>Augļu spēks</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Sākums</a>
+            <a href="{{ url_for('products') }}">Produkti</a>
+            <a href="{{ url_for('about') }}">Par mums</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 - 2025</p>
+    </footer>
+</body>
+</html>

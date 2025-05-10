@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ razotajs.name }} - Ražotājs{% endblock %}
+{% block content %}
+<div class="taisītājs">
+    <h1>{{ razotajs.name }}</h1>
+    <div class="razotajs-info">
+        {% if razotajs.image %}
+            <img src="{{ url_for('static', filename='images/razotaji/' ~ razotajs.image) }}"
+                 alt="{{ razotajs.name }}">
+        {% endif %}
+        {% if razotajs.apraksts %}
+            <p>{{ razotajs.apraksts }}</p>
+        {% endif %}
+        <p><a href="{{ url_for('products') }}">Atpakaļ uz produktiem</a></p>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+.razotajs-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrā attēlu un tekstu horizontāli */
+    text-align: center; /* Centrā tekstu */
+}
+
+.razotajs-info img {
+    border: 1px solid #ccc; /* Pievieno nelielu rāmīti ap attēlu */
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+</style>

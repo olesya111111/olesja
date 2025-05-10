@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkta forma</title>
+</head>
+<body>
+    <h1>{% if product %}Rediģēt produktu{% else %}Izveidot jaunu produktu{% endif %}</h1>
+
+    <form method="POST">
+        <div>
+            <label for="name">Produkta nosaukums:</label>
+            <input type="text" id="name" name="name" value="{{ product['name'] if product else '' }}" required>
+        </div>
+        <div>
+            <label for="price">Cena (€):</label>
+            <input type="number" id="price" name="price" value="{{ product['price'] if product else '' }}" required>
+        </div>
+
+        <button type="submit">{% if product %}Saglabāt izmaiņas{% else %}Izveidot produktu{% endif %}</button>
+    </form>
+
+    {% if product %}
+    <form action="{{ url_for('product_delete', product_id=product['id']) }}" method="POST">
+        <button type="submit" style="color: red;">Dzēst šo produktu</button>
+    </form>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('products') }}">Atpakaļ uz produktu sarakstu</a>
+</body>
+</html>
